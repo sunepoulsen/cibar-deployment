@@ -1,0 +1,3 @@
+rootProject.name = 'ciber-deployment'
+include 'ciber-deployment-tests'
+

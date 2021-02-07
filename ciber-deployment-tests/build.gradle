@@ -1,0 +1,7 @@
+plugins {
+    id 'groovy'
+}
+
+dependencies {
+    implementation localGroovy() // Note: using the groovy implementation shipped with gradle
+}

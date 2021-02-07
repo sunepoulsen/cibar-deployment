@@ -1,0 +1,39 @@
+subprojects {
+    apply plugin: 'groovy'
+
+    group 'dk.sunepoulsen.ciber-deployment'
+    version "${project.property('ciber-deployment.version')}"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_15
+    targetCompatibility = JavaVersion.VERSION_15
+
+    task allWrappers(type: Wrapper) {
+        gradleVersion = "${project.property('gradle.version')}"
+    }
+
+    dependencies {
+        // Lombok
+        compileOnly "org.projectlombok:lombok:${project.property('lombok.version')}"
+        annotationProcessor "org.projectlombok:lombok:${project.property('lombok.version')}"
+
+        // Logging
+        implementation "ch.qos.logback:logback-classic:${project.property('logback.version')}"
+        implementation "ch.qos.logback:logback-core:${project.property('logback.version')}"
+        implementation "org.slf4j:log4j-over-slf4j:${project.property('log4j-over-slf4j.version')}"
+
+        // JUnit
+        testCompile "junit:junit:${project.property('junit.version')}"
+
+        // Spock
+        testImplementation localGroovy() // Note: using the groovy implementation shipped with gradle
+        testImplementation "org.spockframework:spock-core:${project.property('spock-core.version')}"
+        testImplementation "cglib:cglib-nodep:${project.property('cglib-nodep.version')}"
+        testImplementation "org.objenesis:objenesis:${project.property('objenesis.version')}"
+    }
+
+}
