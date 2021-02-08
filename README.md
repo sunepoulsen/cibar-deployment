@@ -13,6 +13,7 @@ The current applications are deployed:
 
 The applications are using these ports
 
-| Application Name | Environment | Port  |
-|------------------|-------------|-------|
-| Nexus            | Prod        | 21081 |
+| Application Name         | Environment | Port  |
+|--------------------------|-------------|-------|
+| Nexus                    | Prod        | 21081 |
+| Docker shapshot registry | Prod        | 21079 |

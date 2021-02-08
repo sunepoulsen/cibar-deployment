@@ -4,5 +4,6 @@ services:
     image: sonatype/nexus3
     ports:
       - "21081:8081"
+      - "21079:21079"
     volumes:
       - "~/.ciber/prod/data/nexus:/nexus-data:z"
