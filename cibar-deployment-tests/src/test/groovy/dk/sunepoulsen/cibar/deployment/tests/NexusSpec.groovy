@@ -1,7 +1,7 @@
-package dk.sunepoulsen.ciber.deployment.tests
+package dk.sunepoulsen.cibar.deployment.tests
 
-import dk.sunepoulsen.ciber.deployment.tests.http.HttpHelper
-import dk.sunepoulsen.ciber.deployment.tests.verification.HttpResponseVerificator
+import dk.sunepoulsen.cibar.deployment.tests.http.HttpHelper
+import dk.sunepoulsen.cibar.deployment.tests.verification.HttpResponseVerificator
 import spock.lang.Specification
 
 import java.net.http.HttpRequest

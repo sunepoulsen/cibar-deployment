@@ -1,4 +1,4 @@
-package dk.sunepoulsen.ciber.deployment.tests.verification
+package dk.sunepoulsen.cibar.deployment.tests.verification
 
 import groovy.json.JsonSlurper
 

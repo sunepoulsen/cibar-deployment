@@ -1,6 +1,6 @@
-package dk.sunepoulsen.ciber.deployment.tests.http
+package dk.sunepoulsen.cibar.deployment.tests.http
 
-import dk.sunepoulsen.ciber.deployment.tests.verification.HttpResponseVerificator
+import dk.sunepoulsen.cibar.deployment.tests.verification.HttpResponseVerificator
 import groovy.util.logging.Slf4j
 
 import java.net.http.HttpClient
