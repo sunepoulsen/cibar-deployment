@@ -78,7 +78,7 @@ class HttpHelper {
             .build()
 
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString())
-        return httpResponse.statusCode() == 200
+        return httpResponse.statusCode() > 0
     }
 
 }
