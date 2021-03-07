@@ -15,5 +15,8 @@ The applications are using these ports
 
 | Application Name         | Environment | Port  |
 |--------------------------|-------------|-------|
+| Jenkins                  | Prod        | 21080 |
 | Nexus                    | Prod        | 21081 |
-| Docker shapshot registry | Prod        | 21079 |
+| Docker shapshot registry | Prod        | 21901 |
+| Docker releases registry | Prod        | 21902 |
+| Docker cibar registry    | Prod        | 21903 |
