@@ -63,5 +63,7 @@ class NexusSpec extends Specification {
             'maven'        | 'maven-snapshots'
             'maven'        | 'maven-releases'
             'docker'       | 'docker-snapshots'
+            'docker'       | 'docker-releases'
+            'docker'       | 'docker-cibar'
     }
 }
