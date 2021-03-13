@@ -13,10 +13,15 @@ The current applications are deployed:
 
 The applications are using these ports
 
-| Application Name         | Environment | Port  |
-|--------------------------|-------------|-------|
-| Jenkins                  | Prod        | 21080 |
-| Nexus                    | Prod        | 21081 |
-| Docker shapshot registry | Prod        | 21901 |
-| Docker releases registry | Prod        | 21902 |
-| Docker cibar registry    | Prod        | 21903 |
+| Application Name         | Protocol | Environment | Internal Port  | External Port  |
+|--------------------------|----------|-------------|----------------|----------------|
+| Docker Dind              | Docker   | Prod        | 2376           | 2376           |
+| Jenkins                  | HTTP     | Prod        | 8080           | 21080          |
+| Jenkins                  | HTTP     | Prod        | 50000          | 21050          |
+| Nexus                    | HTTP     | Prod        | 8081           | 21081          |
+| Docker shapshot registry | HTTP     | Prod        | 9101           | 21901          |
+| Docker shapshot registry | HTTPS    | Prod        | 9102           | -              |
+| Docker releases registry | HTTP     | Prod        | 9103           | 21903          |
+| Docker releases registry | HTTPS    | Prod        | 9104           | -              |
+| Docker cibar registry    | HTTP     | Prod        | 9201           | 21911          |
+| Docker cibar registry    | HTTPS    | Prod        | 9202           | 21912          |

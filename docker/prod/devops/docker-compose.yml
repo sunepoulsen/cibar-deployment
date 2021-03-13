@@ -4,9 +4,10 @@ services:
     image: sonatype/nexus3
     ports:
       - "21081:8081"
-      - "21901:21901"
-      - "21902:21902"
-      - "21903:21903"
+      - "21901:9101"
+      - "21903:9103"
+      - "21911:9201"
+      - "21912:9202"
     volumes:
       - "nexus-data:/nexus-data:z"
     networks:
