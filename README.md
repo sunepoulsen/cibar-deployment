@@ -15,9 +15,6 @@ The applications are using these ports
 
 | Application Name         | Protocol | Environment | Internal Port  | External Port  |
 |--------------------------|----------|-------------|----------------|----------------|
-| Docker Dind              | Docker   | Prod        | 2376           | 2376           |
-| Jenkins                  | HTTP     | Prod        | 8080           | 21080          |
-| Jenkins                  | HTTP     | Prod        | 50000          | 21050          |
 | Nexus                    | HTTP     | Prod        | 8081           | 21081          |
 | Docker shapshot registry | HTTP     | Prod        | 9101           | 21901          |
 | Docker shapshot registry | HTTPS    | Prod        | 9102           | -              |
