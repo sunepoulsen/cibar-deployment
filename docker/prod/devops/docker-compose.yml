@@ -13,40 +13,8 @@ services:
     networks:
       devops:
 
-  cibar-docker-dind:
-    image: docker:dind
-    environment:
-      - DOCKER_TLS_CERTDIR=/certs
-    privileged: true
-    ports:
-      - "2376:2376"
-    volumes:
-      - "docker-certs:/certs/client:z"
-      - "jenkins-data:/var/jenkins_home:z"
-    networks:
-      devops:
-        aliases:
-          - docker
-
-  cibar-jenkins-blueocean:
-    image: jenkinsci/blueocean
-    environment:
-      - DOCKER_HOST=tcp://docker:2376
-      - DOCKER_CERT_PATH=/certs/client
-      - DOCKER_TLS_VERIFY=1
-    ports:
-      - "21080:8080"
-      - "21050:50000"
-    volumes:
-      - "docker-certs:/certs/client:ro"
-      - "jenkins-data:/var/jenkins_home:z"
-    networks:
-      devops:
-
 volumes:
   nexus-data:
-  docker-certs:
-  jenkins-data:
 
 networks:
   devops:
