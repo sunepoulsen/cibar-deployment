@@ -9,8 +9,11 @@ subprojects {
         mavenCentral()
     }
 
-    sourceCompatibility = JavaVersion.VERSION_15
-    targetCompatibility = JavaVersion.VERSION_15
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
 
     task allWrappers(type: Wrapper) {
         gradleVersion = "${project.property('gradle.version')}"
@@ -18,22 +21,24 @@ subprojects {
 
     dependencies {
         // Lombok
-        compileOnly "org.projectlombok:lombok:${project.property('lombok.version')}"
-        annotationProcessor "org.projectlombok:lombok:${project.property('lombok.version')}"
+        compileOnly 'org.projectlombok:lombok:1.18.24'
+        annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+        // Groovy
+        implementation 'org.codehaus.groovy:groovy-all:3.0.13'
 
         // Logging
-        implementation "ch.qos.logback:logback-classic:${project.property('logback.version')}"
-        implementation "ch.qos.logback:logback-core:${project.property('logback.version')}"
-        implementation "org.slf4j:log4j-over-slf4j:${project.property('log4j-over-slf4j.version')}"
-
-        // JUnit
-        testCompile "junit:junit:${project.property('junit.version')}"
+        implementation 'ch.qos.logback:logback-classic:1.4.4'
+        implementation 'org.slf4j:log4j-over-slf4j:2.0.3'
 
         // Spock
-        testImplementation localGroovy() // Note: using the groovy implementation shipped with gradle
-        testImplementation "org.spockframework:spock-core:${project.property('spock-core.version')}"
-        testImplementation "cglib:cglib-nodep:${project.property('cglib-nodep.version')}"
-        testImplementation "org.objenesis:objenesis:${project.property('objenesis.version')}"
+        testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+        testImplementation 'net.bytebuddy:byte-buddy:1.12.18'
+        testImplementation 'org.objenesis:objenesis:3.2'
+    }
+
+    test {
+        useJUnitPlatform()
     }
 
 }
