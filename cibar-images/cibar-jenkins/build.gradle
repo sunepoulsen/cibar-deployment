@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+tasks.register('buildImage') {
+    def distBuildDir = "${project.projectDir.absolutePath}/build/resources/main".toString()
+
+    doLast {
+        exec {
+            workingDir distBuildDir
+            commandLine 'docker', 'buildx', 'build', '-t', "${cibarJenkinsDockerImageName}:${cibarJenkinsDockerImageTag}", '.'
+        }
+        exec {
+            workingDir distBuildDir
+            commandLine 'docker', 'image', 'prune', '-f'
+        }
+    }
+}
+
+tasks.buildImage.dependsOn tasks.processResources

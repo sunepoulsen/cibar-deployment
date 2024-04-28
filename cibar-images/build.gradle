@@ -1,0 +1,27 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+subprojects {
+    apply plugin: 'java'
+
+    def resourceProperties = [
+        // Project properties
+        projectName: project.name.toString(),
+        projectBuildDir: "${project.projectDir.absolutePath}/build".toString(),
+        version: project.property('version').toString(),
+
+        // Docker Image properties
+        cibarJenkinsDockerImageName: "$cibarJenkinsDockerImageName".toString(),
+        cibarJenkinsDockerImageTag: "$cibarJenkinsDockerImageTag".toString(),
+        jenkinsBaseDockerImageName: "$jenkinsBaseDockerImageName".toString(),
+        jenkinsBaseDockerImageTag: "$jenkinsBaseDockerImageTag".toString(),
+    ]
+
+    processResources {
+        filter(ReplaceTokens, tokens: resourceProperties)
+    }
+
+    processTestResources {
+        filter(ReplaceTokens, tokens: resourceProperties)
+    }
+
+}
