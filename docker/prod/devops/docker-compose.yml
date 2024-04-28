@@ -1,7 +1,6 @@
-version: "2"
 services:
   cibar-nexus:
-    image: sonatype/nexus3:3.56.0
+    image: sonatype/nexus3:3.67.1
     ports:
       - "21081:8081"
       - "21901:9101"
@@ -27,6 +26,8 @@ services:
       - prod_sonarqube_logs:/opt/sonarqube/logs
     ports:
       - "21900:9000"
+    networks:
+      devops:
 
   cibar-sonarqube-database:
     image: postgres:12
@@ -37,6 +38,8 @@ services:
     volumes:
       - cibar-sonarqube-postgresql:/var/lib/postgresql
       - cibar-sonarqube-postgresql-data:/var/lib/postgresql/data
+    networks:
+      devops:
 
   cibar-docker-dind:
     image: docker:dind
@@ -44,17 +47,17 @@ services:
       - DOCKER_TLS_CERTDIR=/certs
     privileged: true
     ports:
-      - "2376:2376"
+      - "21376:2376"
     volumes:
-      - "docker-certs:/certs/client:z"
-      - "jenkins-data:/var/jenkins_home:z"
+      - "cibar-docker-certs:/certs/client:z"
+      - "cibar-jenkins-data:/var/jenkins_home:z"
     networks:
       devops:
         aliases:
           - docker
 
-  cibar-jenkins-blueocean:
-    image: jenkinsci/blueocean:1.25.7
+  cibar-jenkins:
+    image: cibar/jenkins:lts-jdk21
     environment:
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
@@ -63,8 +66,8 @@ services:
       - "21080:8080"
       - "21050:50000"
     volumes:
-      - "docker-certs:/certs/client:ro"
-      - "jenkins-data:/var/jenkins_home:z"
+      - "cibar-docker-certs:/certs/client:ro"
+      - "cibar-jenkins-data:/var/jenkins_home:z"
     networks:
       devops:
 
@@ -78,8 +81,8 @@ volumes:
     external: true
   cibar-sonarqube-postgresql:
   cibar-sonarqube-postgresql-data:
-  docker-certs:
-  jenkins-data:
+  cibar-docker-certs:
+  cibar-jenkins-data:
 
 networks:
   devops:
