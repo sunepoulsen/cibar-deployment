@@ -1,3 +1,6 @@
 rootProject.name = 'cibar-deployment'
+
 include 'cibar-deployment-tests'
+include 'cibar-images'
+include 'cibar-images:cibar-jenkins'
 
